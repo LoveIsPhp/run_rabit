@@ -1,0 +1,14 @@
+version: '2'
+services:
+  php:
+    build: ./docker/php
+    volumes:
+      - ./:/app
+      - ./docker/php/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini
+      - ./docker/php/php.ini:/usr/local/etc/php/php.ini
+      - ~/.composer-docker/cache:/root/.composer/cache:delegated
+    environment:
+      PHP_IDE_CONFIG: "serverName=run_rabit"
+    working_dir: /app
+    ports:
+      - '8000:80'
