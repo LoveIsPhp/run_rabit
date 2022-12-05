@@ -1,4 +1,4 @@
-version: '2'
+version: '3.7'
 services:
   php:
     build: ./docker/php
@@ -12,8 +12,12 @@ services:
     working_dir: /app
     ports:
       - '8000:80'
+    links:
+      - rabbitmq
     depends_on:
       - db
+    networks:
+      - rabbitmq_net
   db:
     image: mysql:8
     restart: always
@@ -22,3 +26,23 @@ services:
       MYSQL_ROOT_PASSWORD: root
     ports:
       - '3306:3306'
+    networks:
+      - rabbitmq_net
+  rabbitmq:
+    image: rabbitmq:3.9-management
+    hostname: rabbitmq
+    ports:
+      - 5672:5672
+      - 15672:15672
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq/
+      - rabbitmq_log:/var/log/rabbitmq/
+    networks:
+      - rabbitmq_net
+volumes:
+  rabbitmq_data:
+  rabbitmq_log:
+
+networks:
+  rabbitmq_net:
+    driver: bridge

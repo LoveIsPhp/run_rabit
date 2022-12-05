@@ -31,4 +31,14 @@ class HelloController extends Controller
 
         return ExitCode::OK;
     }
+
+    /**
+     * See how rabit works
+     * @return int
+     */
+    public function actionTestRabit()
+    {
+        $dffdg = 234;
+        return ExitCode::OK;
+    }
 }
