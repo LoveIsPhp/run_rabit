@@ -42,6 +42,7 @@ services:
       - rabbitmq_log:/var/log/rabbitmq/
     networks:
       - rabbitmq_net
+    command: ["bash", "-c", "chmod 400 /var/lib/rabbitmq/.erlang.cookie; rabbitmq-server"]
   redis:
     image: redis:3.0
     volumes:
