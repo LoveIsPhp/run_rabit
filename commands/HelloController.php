@@ -56,4 +56,10 @@ class HelloController extends Controller
         $dffdg = 234;
         return ExitCode::OK;
     }
+
+    public function actionTestRedis()
+    {
+        Yii::$app->redis->set('mykey', 'some value');
+        echo Yii::$app->redis->get('mykey');
+    }
 }
