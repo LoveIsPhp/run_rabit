@@ -8,7 +8,8 @@ $config = [
     'basePath' => dirname(__DIR__),
     'bootstrap' => [
         'queue',
-        'log'
+        'log',
+        'redis'
     ],
     'controllerNamespace' => 'app\commands',
     'aliases' => [
@@ -37,7 +38,14 @@ $config = [
             'user' => 'guest',
             'password' => 'guest',
             'queueName' => 'queue',
-        ]
+        ],
+        'redis' => [
+            'class' => 'yii\redis\Connection',
+            'hostname' => $_ENV['REDIS_HOST'],
+            'port' => $_ENV['REDIS_PORT'],
+            'database' => 0,
+            'password' => $_ENV['REDIS_PASSWORD']
+        ],
     ],
     'params' => $params,
     /*
