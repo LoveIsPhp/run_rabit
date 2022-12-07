@@ -62,6 +62,13 @@ services:
       - 9200:9200
     networks:
       - rabbitmq_net
+  memcached:
+    container_name: memcached
+    image: memcached:latest
+    ports:
+      - "11211:11211"
+    networks:
+      - rabbitmq_net
 volumes:
   rabbitmq_data:
   rabbitmq_log:
