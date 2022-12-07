@@ -81,4 +81,17 @@ class HelloController extends Controller
         Yii::$app->redis->set('mykey', 'some value');
         echo Yii::$app->redis->get('mykey');
     }
+
+    public function actionTestMemcach()
+    {
+        $cache = Yii::$app->cache;
+        $key   = 'Mem';
+        $data  = $cache->get($key);
+        if ($data === false) {
+            $key  = 'Mem';
+            $data = 'My First Memcached Data';
+            $cache->set($key, $data);
+        }
+        echo $data;
+    }
 }
