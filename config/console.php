@@ -10,7 +10,8 @@ $config = [
         'queue',
         'log',
         'redis',
-        'elasticsearch'
+        'elasticsearch',
+        'cache'
     ],
     'controllerNamespace' => 'app\commands',
     'aliases' => [
@@ -19,9 +20,9 @@ $config = [
         '@tests' => '@app/tests',
     ],
     'components' => [
-        'cache' => [
-            'class' => 'yii\caching\FileCache',
-        ],
+//        'cache' => [
+//            'class' => 'yii\caching\FileCache',
+//        ],
         'log' => [
             'targets' => [
                 [
@@ -54,7 +55,18 @@ $config = [
             // set autodetectCluster to false if you don't want to auto detect nodes
             // 'autodetectCluster' => false,
             'dslVersion' => 7, // default is 5
-        ]
+        ],
+        'cache' => [
+            'class'        => 'yii\caching\MemCache',
+            'useMemcached' => true,
+            'servers' => [
+                [
+                    'host' => 'memcached',
+                    'port' => 11211,
+                    'weight' => 60,
+                ]
+            ],
+        ],
     ],
     'params' => $params,
     /*
