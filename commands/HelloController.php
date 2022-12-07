@@ -40,19 +40,26 @@ class HelloController extends Controller
      */
     public function actionTestRabit()
     {
+        $id = Yii::$app->queue->push(new CreateNewsJob([
+            'title' => 'news_tetst-title',
+            'content' => 'news_content_test',
+        ]));
+
+        $dffdg = 234;
+        return ExitCode::OK;
+    }
+
+    /**
+     * See how rabit works with delay
+     * @return int
+     */
+    public function actionTestDelayedRabit()
+    {
         $id = Yii::$app->queue->delay(60)->push(new CreateNewsJob([
             'title' => 'news_tetst-title',
             'content' => 'news_content_test',
         ]));
 
-// Check whether the job is waiting for execution.
-        Yii::$app->queue->isWaiting($id);
-
-// Check whether a worker got the job from the queue and executes it.
-        Yii::$app->queue->isReserved($id);
-
-// Check whether a worker has executed the job.
-        Yii::$app->queue->isDone($id);
         $dffdg = 234;
         return ExitCode::OK;
     }
