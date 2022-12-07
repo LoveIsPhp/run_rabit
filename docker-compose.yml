@@ -32,7 +32,7 @@ services:
     networks:
       - rabbitmq_net
   rabbitmq:
-    image: rabbitmq:3.9-management
+    build: ./docker/rabbitmq
     hostname: rabbitmq
     ports:
       - 5672:5672

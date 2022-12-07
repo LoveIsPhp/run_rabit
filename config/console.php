@@ -31,13 +31,11 @@ $config = [
         ],
         'db' => $db,
         'queue' => [
-            'class' => \yii\queue\amqp\Queue::class,
-            'as log' => \yii\queue\LogBehavior::class,
+            'class' => \yii\queue\amqp_interop\Queue::class,
             'host' => 'rabbitmq',
             'port' => 5672,
             'user' => 'guest',
             'password' => 'guest',
-            'queueName' => 'queue',
         ],
         'redis' => [
             'class' => 'yii\redis\Connection',
