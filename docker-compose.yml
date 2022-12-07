@@ -52,6 +52,16 @@ services:
       - 6379:6379
     networks:
       - rabbitmq_net
+  elasticsearch:
+    container_name: elasticsearch
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.11.0
+    environment:
+      - xpack.security.enabled=false
+      - "discovery.type=single-node"
+    ports:
+      - 9200:9200
+    networks:
+      - rabbitmq_net
 volumes:
   rabbitmq_data:
   rabbitmq_log:
