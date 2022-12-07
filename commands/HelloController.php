@@ -7,6 +7,7 @@
 
 namespace app\commands;
 
+use app\es\News;
 use app\jobs\CreateNewsJob;
 use Yii;
 use yii\console\Controller;
@@ -60,6 +61,17 @@ class HelloController extends Controller
             'content' => 'news_content_test',
         ]));
 
+        $dffdg = 234;
+        return ExitCode::OK;
+    }
+
+    /**
+     * Test how es works
+     * @return int
+     */
+    public function actionTestES()
+    {
+        News::updateMapping();
         $dffdg = 234;
         return ExitCode::OK;
     }
