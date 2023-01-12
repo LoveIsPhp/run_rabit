@@ -60,25 +60,25 @@ $config = [
         ]
     ],
     'controllerMap' => [
-        'batch' => [
-            'class' => 'schmunk42\giiant\commands\BatchController',
-            'overwrite' => true,
-            'modelNamespace' => $crudNs . '\models',
-            'modelQueryNamespace' => $crudNs . '\models\query',
-            'crudControllerNamespace' => $crudNs . '\\controllers',
-            'crudSearchModelNamespace' => $crudNs . '\models\search',
-            'crudViewPath' => '@app/modules/crud/views',
-            'crudPathPrefix' => '/crud/',
-            'crudTidyOutput' => true,
-            'crudActionButtonColumnPosition' => 'right', //left by default
-            'crudProviders' => [
-                \schmunk42\giiant\generators\crud\providers\core\OptsProvider::className()
-            ],
-            'tablePrefix' => '',
-            'tables' => [
-                'news',
-            ]
-        ],
+//        'batch' => [
+//            'class' => 'schmunk42\giiant\commands\BatchController',
+//            'overwrite' => true,
+//            'modelNamespace' => $crudNs . '\models',
+//            'modelQueryNamespace' => $crudNs . '\models\query',
+//            'crudControllerNamespace' => $crudNs . '\\controllers',
+//            'crudSearchModelNamespace' => $crudNs . '\models\search',
+//            'crudViewPath' => '@app/modules/crud/views',
+//            'crudPathPrefix' => '/crud/',
+//            'crudTidyOutput' => true,
+//            'crudActionButtonColumnPosition' => 'right', //left by default
+//            'crudProviders' => [
+//                \schmunk42\giiant\generators\crud\providers\core\OptsProvider::className()
+//            ],
+//            'tablePrefix' => '',
+//            'tables' => [
+//                'news',
+//            ]
+//        ],
 //  docker compose  exec php yii giiant-batch/index --crudControllerNamespace=app\\modules\\crud\\controllers --modelNamespace=
 
 //        'fixture' => [ // Fixture generation command line.
