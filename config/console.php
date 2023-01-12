@@ -2,6 +2,7 @@
 
 $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
+$crudNs = 'app\\modules\\crud';
 
 $config = [
     'id' => 'basic-console',
@@ -16,7 +17,7 @@ $config = [
     'controllerNamespace' => 'app\commands',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
-        '@npm'   => '@vendor/npm-asset',
+        '@npm' => '@vendor/npm-asset',
         '@tests' => '@app/tests',
     ],
     'components' => [
@@ -57,7 +58,7 @@ $config = [
             'dslVersion' => 7, // default is 5
         ],
         'cache' => [
-            'class'        => 'yii\caching\MemCache',
+            'class' => 'yii\caching\MemCache',
             'useMemcached' => true,
             'servers' => [
                 [
@@ -69,13 +70,40 @@ $config = [
         ],
     ],
     'params' => $params,
-    /*
     'controllerMap' => [
-        'fixture' => [ // Fixture generation command line.
-            'class' => 'yii\faker\FixtureController',
+        'batch' => [
+            'class' => 'schmunk42\giiant\commands\BatchController',
+            'overwrite' => true,
+            'modelNamespace' => $crudNs . '\models',
+            'modelQueryNamespace' => $crudNs . '\models\query',
+            'crudControllerNamespace' => $crudNs . '\\controllers',
+            'crudSearchModelNamespace' => $crudNs . '\models\search',
+            'crudViewPath' => '@app/modules/crud/views',
+            'crudPathPrefix' => '/crud/',
+            'crudTidyOutput' => true,
+            'crudActionButtonColumnPosition' => 'right', //left by default
+            'crudProviders' => [
+                \schmunk42\giiant\generators\crud\providers\core\OptsProvider::className()
+            ],
+            'tablePrefix' => '',
+            'tables' => [
+                'news',
+            ]
+            // docker compose  exec php yii giiant-batch/index --crudControllerNamespace=app\\modules\\crud\\controllers --modelNamespace=
+            /**
+            ./yii giiant-batch \
+            --interactive=0 \
+            --overwrite=1 \
+            --modelDb=db \
+            --modelBaseClass=yii\\db\\ActiveRecord \
+            --crudProviders=schmunk42\\giiant\\generators\\crud\\providers\\core\\optsProvider \
+            --tables=news
+             */
         ],
+//        'fixture' => [ // Fixture generation command line.
+//            'class' => 'yii\faker\FixtureController',
+//        ],
     ],
-    */
 ];
 
 if (YII_ENV_DEV) {

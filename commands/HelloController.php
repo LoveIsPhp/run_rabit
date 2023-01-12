@@ -71,7 +71,8 @@ class HelloController extends Controller
      */
     public function actionTestES()
     {
-        News::updateMapping();
+//        News::updateMapping();
+        $app = Yii::$app;
         $dffdg = 234;
         return ExitCode::OK;
     }
@@ -93,5 +94,11 @@ class HelloController extends Controller
             $cache->set($key, $data);
         }
         echo $data;
+    }
+
+    public function actionTestScript()
+    {
+        
+        return ExitCode::OK;
     }
 }
