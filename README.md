@@ -1,3 +1,10 @@
+### Instalation
+
+After installing a project run this so it could get access to files
+```
+sudo chmod -R a+rwx .
+```
+
 ### Useful command
 
 Run console commands
