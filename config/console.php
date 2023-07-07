@@ -2,7 +2,7 @@
 
 $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
-
+$crudNs = 'app';
 $config = [
     'id' => 'basic-console',
     'basePath' => dirname(__DIR__),
@@ -18,6 +18,14 @@ $config = [
         '@tests' => '@app/tests',
     ],
     'components' => [
+        'i18n' => [
+            'translations' => [
+                '*' => [
+                    'class' => 'yii\i18n\PhpMessageSource',
+                    'basePath' => '@app/messages', // if advanced application, set @frontend/messages
+                ],
+            ],
+        ],
 //        'cache' => [
 //            'class' => 'yii\caching\FileCache',
 //        ],
@@ -46,13 +54,27 @@ $config = [
         ],
     ],
     'params' => $params,
-    /*
+
     'controllerMap' => [
         'fixture' => [ // Fixture generation command line.
             'class' => 'yii\faker\FixtureController',
         ],
+        'batch' => [
+            'class' => 'schmunk42\giiant\commands\BatchController',
+            'overwrite' => true,
+            'modelNamespace' => $crudNs . '\models',
+            'modelQueryNamespace' => $crudNs . '\models\query',
+            'crudControllerNamespace' => $crudNs . '\controllers',
+            'crudSearchModelNamespace' => $crudNs . '\models\search',
+            'crudViewPath' => '@app/views',
+            'crudPathPrefix' => '/crud/',
+            'crudTidyOutput' => true,
+            'crudActionButtonColumnPosition' => 'right', //left by default
+            'crudProviders' => [
+                \schmunk42\giiant\generators\crud\providers\core\OptsProvider::className()
+            ],
+        ]
     ],
-    */
 ];
 
 if (YII_ENV_DEV) {
