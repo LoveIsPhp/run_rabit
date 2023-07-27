@@ -61,7 +61,19 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $kek = 12321;
+        if (isset($_FILES['kek']['tmp_name'])) {
+            var_dump($_REQUEST["kek"]);
+            die();
+//            $target_file =  \Yii::getAlias('@app') . "/web/" . $_FILES["kek"]["name"];
+//            if (move_uploaded_file($_FILES["kek"]["tmp_name"], $target_file)) {
+//                echo "The file ". htmlspecialchars( basename( $_FILES["kek"]["name"])). " has been uploaded.";
+//            } else {
+//                echo "Sorry, there was an error uploading your file.";
+//            }
+//            $kek = $_FILES['kek']['name'];
+        }
+        return $this->render('index',['test' => $kek]);
     }
 
     /**
