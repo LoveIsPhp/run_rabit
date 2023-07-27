@@ -1,9 +1,9 @@
 <?php
 
-namespace app\models;
+namespace app\modules\crud\models;
 
 use Yii;
-use \app\models\base\News as BaseNews;
+use \app\modules\crud\models\base\News as BaseNews;
 use yii\helpers\ArrayHelper;
 
 /**

@@ -1,0 +1,21 @@
+[33mcommit 1952e6de5e67dbdb125fdd352f02ff4f56a1f733[m[33m ([m[1;36mHEAD -> [m[1;32msushkov[m[33m, [m[1;31morigin/sushkov[m[33m)[m
+Author: parviz <zulfugarov@arnica.pro>
+Date:   Thu Jul 6 11:19:53 2023 +0500
+
+    Add a command that helps yii to get access to all over the project
+
+[1mdiff --git a/README.md b/README.md[m
+[1mindex f5e51a0..c3be1a9 100755[m
+[1m--- a/README.md[m
+[1m+++ b/README.md[m
+[36m@@ -1,3 +1,10 @@[m
+[32m+[m[32m### Instalation[m
+[32m+[m
+[32m+[m[32mAfter installing a project run this so it could get access to files[m
+[32m+[m[32m```[m
+[32m+[m[32msudo chmod -R a+rwx .[m
+[32m+[m[32m```[m
+[32m+[m
+ ### Useful command[m
+ [m
+ Run console commands[m

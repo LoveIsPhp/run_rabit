@@ -2,16 +2,14 @@
 
 $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
-
+$crudNs = 'app';
 $config = [
     'id' => 'basic-console',
     'basePath' => dirname(__DIR__),
     'bootstrap' => [
         'queue',
         'log',
-        'redis',
-        'elasticsearch',
-        'cache'
+        'redis'
     ],
     'controllerNamespace' => 'app\commands',
     'aliases' => [
@@ -20,6 +18,14 @@ $config = [
         '@tests' => '@app/tests',
     ],
     'components' => [
+        'i18n' => [
+            'translations' => [
+                '*' => [
+                    'class' => 'yii\i18n\PhpMessageSource',
+                    'basePath' => '@app/messages', // if advanced application, set @frontend/messages
+                ],
+            ],
+        ],
 //        'cache' => [
 //            'class' => 'yii\caching\FileCache',
 //        ],
@@ -46,36 +52,29 @@ $config = [
             'database' => 0,
             'password' => $_ENV['REDIS_PASSWORD']
         ],
-        'elasticsearch' => [
-            'class' => 'yii\elasticsearch\Connection',
-            'nodes' => [
-                ['http_address' => 'elasticsearch:9200'],
-                // configure more hosts if you have a cluster
-            ],
-            // set autodetectCluster to false if you don't want to auto detect nodes
-            // 'autodetectCluster' => false,
-            'dslVersion' => 7, // default is 5
-        ],
-        'cache' => [
-            'class'        => 'yii\caching\MemCache',
-            'useMemcached' => true,
-            'servers' => [
-                [
-                    'host' => 'memcached',
-                    'port' => 11211,
-                    'weight' => 60,
-                ]
-            ],
-        ],
     ],
     'params' => $params,
-    /*
+
     'controllerMap' => [
         'fixture' => [ // Fixture generation command line.
             'class' => 'yii\faker\FixtureController',
         ],
+        'batch' => [
+            'class' => 'schmunk42\giiant\commands\BatchController',
+            'overwrite' => true,
+            'modelNamespace' => $crudNs . '\models',
+            'modelQueryNamespace' => $crudNs . '\models\query',
+            'crudControllerNamespace' => $crudNs . '\controllers',
+            'crudSearchModelNamespace' => $crudNs . '\models\search',
+            'crudViewPath' => '@app/views',
+            'crudPathPrefix' => '/crud/',
+            'crudTidyOutput' => true,
+            'crudActionButtonColumnPosition' => 'right', //left by default
+            'crudProviders' => [
+                \schmunk42\giiant\generators\crud\providers\core\OptsProvider::className()
+            ],
+        ]
     ],
-    */
 ];
 
 if (YII_ENV_DEV) {

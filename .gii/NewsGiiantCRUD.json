@@ -1,0 +1,67 @@
+{
+    "modelclass": {
+        "value": "app\\models\\News",
+        "name": "modelClass"
+    },
+    "searchmodelclass": {
+        "value": "app\\models\\search\\News",
+        "name": "searchModelClass"
+    },
+    "controllerclass": {
+        "value": "app\\controllers\\NewsController",
+        "name": "controllerClass"
+    },
+    "basecontrollerclass": {
+        "value": "yii\\web\\Controller",
+        "name": "baseControllerClass"
+    },
+    "viewpath": {
+        "value": "@app\/views",
+        "name": "viewPath"
+    },
+    "pathprefix": {
+        "value": "\/crud\/",
+        "name": "pathPrefix"
+    },
+    "enablei18n": {
+        "value": true,
+        "name": "enableI18N"
+    },
+    "singularentities": {
+        "value": true,
+        "name": "singularEntities"
+    },
+    "indexwidgettype": {
+        "value": "grid",
+        "name": "indexWidgetType"
+    },
+    "formlayout": {
+        "value": "horizontal",
+        "name": "formLayout"
+    },
+    "actionbuttonclass": {
+        "value": "yii\\grid\\ActionColumn",
+        "name": "actionButtonClass"
+    },
+    "providerlist": {
+        "value": {
+            "0": "schmunk42\\giiant\\generators\\crud\\providers\\core\\OptsProvider",
+            "269": "schmunk42\\giiant\\generators\\crud\\providers\\core\\OptsProvider",
+            "342": "schmunk42\\giiant\\generators\\crud\\providers\\core\\RelationProvider",
+            "343": "schmunk42\\giiant\\generators\\crud\\providers\\core\\CallbackProvider"
+        },
+        "name": "providerList"
+    },
+    "template": {
+        "value": "default",
+        "name": "template"
+    },
+    "accessfilter": {
+        "value": null,
+        "name": "accessFilter"
+    },
+    "modelmessagecategory": {
+        "value": "models",
+        "name": "modelMessageCategory"
+    }
+}
